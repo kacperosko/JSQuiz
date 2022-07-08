@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Quiz</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div class="main-box">
+        <div class="card-quiz">
+            <h2 id="title">Are You ready to play a game with me and javascript here in safari?</h1>
+            <div id="box" class="answer-box row justify-content-center">
+                <div class="row justify-content-center">
+                    <div id="a1" class="col-auto answer a1" onclick="sign(this.id)">
+                        ANSWERW 1
+                    </div>
+                    <div id="a2" class="col-auto answer a2" onclick="sign(this.id)">
+                        ANSWERW 2
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div id="a3" class="col-auto answer a3" onclick="sign(this.id)">
+                        ANSWERW 3
+                    </div>
+                    <div id="a4" class="col-auto answer a4" onclick="sign(this.id)">
+                        ANSWERW 4
+                    </div>
+                </div>
+            </div>
+            <div class="countdown-text row justify-content-center" id="countdown">
+                30
+            </div>
+        </div>
+        
+    </div>
+    <div class="popup" id="popup">
+        <div class="popup-box" id="popup-box">
+            <h3 style="text-align:center;" id="popup-text">Brawo to poprawna odpowiedź!!!</h3>
+            <!-- <button id="nextq">Nastepne pytanie</button> -->
+        </div>
+    </div>
+    <script type="text/javascript" src="/static/js/game.js"></script>
+</body>
+</html>
