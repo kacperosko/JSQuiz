@@ -7,11 +7,11 @@ Let's play a game made in JavaScript to test Your knowledge!
 
 Download project and open it with Visual Studio Code
 
-Install extension 'Live Server' and run JSQuiz/index.html in your temporary server
+Install extension 'Live Server' and run JSQuiz/index.html on the temporary server
 ## Features
 
-- Colorful friendly theme
-- High interactions interface
-- Variables saving to cookies
+- A colorful, friendly theme
+- Extensive interaction with the user
+- Variables writing to cookies
 - Editable list of questions
 
