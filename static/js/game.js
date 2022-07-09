@@ -54,8 +54,10 @@ function sleep (time) {
 function animate(id, correction){
     if (correction){
         document.getElementById('popup-text').innerHTML = "Brawo to poprawna odpowiedź!";
+        document.getElementById('popup-box').style.backgroundColor = '#17ba3d'
     }else{
         document.getElementById('popup-text').innerHTML = "Niestety nie trafiłeś...";
+        document.getElementById('popup-box').style.backgroundColor = '#c1300c'
     }
 
     document.getElementById("popup").style.display = 'flex';   
