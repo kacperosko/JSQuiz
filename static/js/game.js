@@ -2,16 +2,17 @@
 var bg_colors = {a1:"#7AE6B3", a2:"#41C0F2", a3:"#FFE870", a4:"#F272C5"};
 let q;
 var how_many;
+var score = 0;
 function saveData(data) {
     q=data.qusetions;
     how_many=data.count}
-const questions_url = '/j.json';
+const questions_url = '/questions.json';
 async function getQuestions() {
     const response = await fetch(questions_url);
     const data = await response.json();
-    console.log(data.count);
     loadData(data.qusetions);
     saveData(data);
+    document.getElementById('how_many').innerHTML = data.count;
 }  
 window.onload = function() {
     getQuestions();
@@ -21,7 +22,6 @@ var bool = true;
 var question_count = 0;
 var correct;
 function  loadData(data) {
-    console.log(data);
     bool = true;
     document.getElementById('title').innerHTML = data[question_count][0];
 
@@ -31,6 +31,10 @@ function  loadData(data) {
     document.getElementById('a4').innerHTML = data[question_count][4];
     correct = data[question_count][5];
     question_count++;
+
+    // var $mainDiv = jQuery("div");
+    // $mainDiv.attr('id', "main");
+    // $mainDiv.load('final.html');
 }
 
 function next_step(id){
@@ -71,16 +75,15 @@ function animate(id, correction){
 }
 var correct_bool;
 function is_correct(id){
-    console.log(parseInt(id.slice(-1)) +" "+correct);
     if (parseInt(id.slice(-1)) == correct){
-        console.log("POPRAWNE!");
         correct_bool = true;
+        score++;
         
     }else{
         correct_bool = false;
-        console.log("NOOO!");
     }
     animate(id, correct_bool);
+    document.getElementById('score').innerHTML = score;
     // next_step(id);
     bool = true;
 }
@@ -89,6 +92,11 @@ function is_next_question(){
     // console.log("COUNTER "+question_count+" : " +how_many)
     if(question_count == how_many){
         //zakoncz gre -- final screen z wynikiem
+        document.cookie = "score="+score;
+        var $mainDiv = jQuery("div");
+        $mainDiv.attr('id', "main");
+        $mainDiv.load('final.html')
+        
         return false;
     }
     return true;
@@ -109,4 +117,8 @@ function sign(id) {
         is_correct(id);
     }
     console.log(q);
+}
+
+function again(){
+    location.href = "../../index.html";
 }
