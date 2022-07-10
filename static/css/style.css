@@ -4,7 +4,6 @@
     font-family: Tahoma, sans-serif;
 }
 
-
 .main-box{
     width: 100%;
     height: 100%;
@@ -23,7 +22,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    /* background-color: #38322a9e; */
     display: none;
 }
 @keyframes up{
@@ -35,24 +33,18 @@
     }
 }
 @keyframes down{
-        0%{
-            transform: translateY(0%);
-        }
-        100%{
-            transform: translateY(400%);
-        }
+    0%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(400%);
+    }
 }
 .up{
-    animation-timing-function: ease-in-out;
-    animation-name: up;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+    animation: up 1s ease-in-out 0s forwards;
 }
 .down{
-    animation-timing-function: ease-in-out;
-    animation-name: down;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+    animation: down 1s ease-in-out 0s forwards;
 }
 .popup-box{
     color: white;
@@ -67,22 +59,7 @@
     -moz-box-shadow: 0 0 50px rgb(55, 55, 55);
     -webkit-box-shadow: 0 0 50px rgb(55, 55, 55);
     box-shadow: 0 0 50px rgb(55, 55, 55);
-    /* transition: all 500ms; */
-    /* transform: translateY(400%); */
 }
-#nextq{
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    background-color: #41C0F2;
-    padding: 10px;
-    border-color: #41C0F2;
-    border-radius: 20px;
-    transition: background-color 0.1s;
-}
-#nextq:hover{
-    background-color: #2d8bb1;
-}
-
 .card-quiz{
     width: 900px;
     height: 650px;
@@ -100,7 +77,6 @@
     width: 900px;
     background-color: #41C0F2;
     display: flex;
-    
 }
 .foot-box{
     width: 300px;
@@ -141,27 +117,19 @@
     border-radius: 10px;
 }
 .start_button{
-    /* display: none; */
     color:#9D7BD9;
     font-size: 20px;
     position: relative;
     width: 150px;
     height: 70px;
 }
-
-#start:hover{
-    background-color: #9D7BD9;
-    color: #ebd7be;
-}
-#final:hover{
+#start:hover, #final:hover{
     background-color: #9D7BD9;
     color: #ebd7be;
 }
 .answer-box{
-    /* visibility: hidden; */
     height: 80% !important;
 }
-
 .answer{
     width: 400px !important;
     border: solid 3px;
@@ -178,29 +146,7 @@
 #a3{border-color: #FFE870;}
 #a4{border-color: #F272C5;}
 
-
 .a1:hover{background-color: #7AE6B3; color:white;}
 .a2:hover{background-color: #41C0F2; color: white;}
 .a3:hover{background-color: #FFE870; color: white}
 .a4:hover{background-color: #F272C5; color: white;}
-
-/* Color Theme Swatches in Hex */
-.Paleta-dulce-intento-tv-1-hex { color: #F272C5; }
-.Paleta-dulce-intento-tv-2-hex { color: #9D7BD9; }
-.Paleta-dulce-intento-tv-3-hex { color: #FFE870; }
-.Paleta-dulce-intento-tv-4-hex { color: #7AE6B3; }
-.Paleta-dulce-intento-tv-5-hex { color: #41C0F2; }
-
-/* Color Theme Swatches in RGBA */
-.Paleta-dulce-intento-tv-1-rgba { color: rgba(242, 114, 197, 1); }
-.Paleta-dulce-intento-tv-2-rgba { color: rgba(157, 123, 217, 1); }
-.Paleta-dulce-intento-tv-3-rgba { color: rgba(255, 232, 112, 1); }
-.Paleta-dulce-intento-tv-4-rgba { color: rgba(122, 230, 179, 1); }
-.Paleta-dulce-intento-tv-5-rgba { color: rgba(65, 192, 242, 1); }
-
-/* Color Theme Swatches in HSLA */
-.Paleta-dulce-intento-tv-1-hsla { color: hsla(321, 83, 69, 1); }
-.Paleta-dulce-intento-tv-2-hsla { color: hsla(261, 55, 66, 1); }
-.Paleta-dulce-intento-tv-3-hsla { color: hsla(50, 100, 71, 1); }
-.Paleta-dulce-intento-tv-4-hsla { color: hsla(151, 68, 69, 1); }
-.Paleta-dulce-intento-tv-5-hsla { color: hsla(196, 87, 60, 1); }
