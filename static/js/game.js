@@ -1,11 +1,13 @@
 
 var bg_colors = {a1:"#7AE6B3", a2:"#41C0F2", a3:"#FFE870", a4:"#F272C5"};
+var pop_msg = {true: ["That's correct!", "Excellent, this is good answer", "Congrats, good answer!!!", "Wow! You're amazing"],
+                false:["Unfortunally that's incorrect", "Not this time but keep trying", "This answer doesn't look correct", "Bad shoot, try again"]}
 let q;
-var how_many;
+var how_many, msg;
 var score = 0;
 function saveData(data) {
     q=data.qusetions;
-    how_many=data.count}
+    how_many=data.qusetions.length}
 const questions_url = '/questions.json';
 async function getQuestions() {
     const response = await fetch(questions_url);
@@ -52,11 +54,13 @@ function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
 function animate(id, correction){
+    msg = pop_msg[correction];
+    msg = msg[Math.floor(Math.random() * msg.length)];
     if (correction){
-        document.getElementById('popup-text').innerHTML = "Brawo to poprawna odpowiedź!";
+        document.getElementById('popup-text').innerHTML = msg;
         document.getElementById('popup-box').style.backgroundColor = '#17ba3d'
     }else{
-        document.getElementById('popup-text').innerHTML = "Niestety nie trafiłeś...";
+        document.getElementById('popup-text').innerHTML = msg;
         document.getElementById('popup-box').style.backgroundColor = '#c1300c'
     }
 
@@ -73,7 +77,6 @@ function animate(id, correction){
         document.getElementById("popup-box").classList.remove("down");
         next_step(id)
     });
-    // document.getElementById("popup-box").classList.remove("down");
 }
 var correct_bool;
 function is_correct(id){
@@ -91,7 +94,6 @@ function is_correct(id){
 }
 
 function is_next_question(){
-    // console.log("COUNTER "+question_count+" : " +how_many)
     if(question_count == how_many){
         //zakoncz gre -- final screen z wynikiem
         document.cookie = "score="+score;
@@ -109,7 +111,6 @@ function sign(id) {
     if(bool){
         document.getElementById(id).style.backgroundColor = bg_colors[id];
         document.getElementById(id).style.color = '#ffffff';
-        console.log("Zmienilem bg dla", id, ", na:", bg_colors[id])
         
         for (const [key, value] of Object.entries(bg_colors)){
             document.getElementById(key).classList.remove(key);
@@ -118,7 +119,6 @@ function sign(id) {
 
         is_correct(id);
     }
-    console.log(q);
 }
 
 function again(){
