@@ -23,6 +23,7 @@ window.onload = function() {
 var bool = true;
 var question_count = 0;
 var correct;
+var actuall_q = 1;
 function  loadData(data) {
     bool = true;
     document.getElementById('title').innerHTML = data[question_count][0];
@@ -31,6 +32,8 @@ function  loadData(data) {
     document.getElementById('a2').innerHTML = data[question_count][2];
     document.getElementById('a3').innerHTML = data[question_count][3];
     document.getElementById('a4').innerHTML = data[question_count][4];
+
+    document.getElementById('page').innerHTML = actuall_q++;
     correct = data[question_count][5];
     question_count++;
 

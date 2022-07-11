@@ -1,5 +1,4 @@
 {
-    "count": 9,
     "qusetions":[
         ["JavaScript is a ___ -side programming language.", "Client", "Server", "Both", "None", 3],
         ["What will be the result of 3 > 2 > 1 === false", "true", "None", "Error", "false", 1],
