@@ -2,30 +2,35 @@
 var bg_colors = {a1:"#7AE6B3", a2:"#41C0F2", a3:"#FFE870", a4:"#F272C5"};
 var pop_msg = {true: ["That's correct!", "Excellent, this is good answer", "Congrats, good answer!!!", "Wow! You're amazing"],
                 false:["Unfortunally that's incorrect", "Not this time but keep trying", "This answer doesn't look correct", "Bad shoot, try again"]}
-let q;
-var how_many, msg;
-var score = 0;
+var how_many, msg, q;
 function saveData(data) {
     q=data.qusetions;
-    how_many=data.qusetions.length}
+    how_many=data.qusetions.length
+    console.log(how_many)}
 const questions_url = '/questions.json';
 async function getQuestions() {
     const response = await fetch(questions_url);
     const data = await response.json();
     loadData(data.qusetions);
     saveData(data);
-    document.getElementById('how_many').innerHTML = data.count;
+    document.getElementById('how_many').innerHTML = how_many;
+    document.getElementById('score').innerHTML =  sessionStorage.getItem('score');
 }  
 window.onload = function() {
     getQuestions();
 }
 
 var bool = true;
-var question_count = 0;
+// var question_count = 0;
 var correct;
 var actuall_q = 1;
 function  loadData(data) {
     bool = true;
+
+    var question_count = parseInt(sessionStorage.getItem('question_count'));
+    console.log(question_count);
+    console.log(data[question_count][1]);
+    
     document.getElementById('title').innerHTML = data[question_count][0];
 
     document.getElementById('a1').innerHTML = data[question_count][1];
@@ -33,22 +38,18 @@ function  loadData(data) {
     document.getElementById('a3').innerHTML = data[question_count][3];
     document.getElementById('a4').innerHTML = data[question_count][4];
 
-    document.getElementById('page').innerHTML = actuall_q++;
+    document.getElementById('page').innerHTML = parseInt(sessionStorage.getItem('question_count'))+1;
     correct = data[question_count][5];
-    question_count++;
+    // saveCookies('question_count', question_count++);
 
-    // var $mainDiv = jQuery("div");
-    // $mainDiv.attr('id', "main");
-    // $mainDiv.load('final.html');
 }
 
 function next_step(id){
+    document.getElementById(id).style.backgroundColor = "";
+    document.getElementById(id).style.color = '#000000';
     for (const [key, value] of Object.entries(bg_colors)){
         document.getElementById(key).classList.add(key);
     }
-    document.getElementById(id).style.backgroundColor = "";
-    document.getElementById(id).style.color = '#000000';
-
     if(is_next_question()){
         loadData(q)
     }
@@ -85,27 +86,47 @@ var correct_bool;
 function is_correct(id){
     if (parseInt(id.slice(-1)) == correct){
         correct_bool = true;
-        score++;
-        
+        sessionStorage.setItem("score", parseInt(sessionStorage.getItem('score'))+1)
+        // score++;
     }else{
         correct_bool = false;
     }
     animate(id, correct_bool);
-    document.getElementById('score').innerHTML = score;
+    document.getElementById('score').innerHTML =  sessionStorage.getItem('score');
     // next_step(id);
     bool = true;
 }
-
+function saveCookies(name, value){
+    document.cookie = name+"="+value;
+}
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 function is_next_question(){
-    if(question_count == how_many){
+    if((parseInt(sessionStorage.getItem('question_count'))+1) == how_many){
         //zakoncz gre -- final screen z wynikiem
-        document.cookie = "score="+score;
+        sessionStorage.setItem("score", parseInt(sessionStorage.getItem('score'))+1);
+        // document.cookie = "score="+score;
         var $mainDiv = jQuery("div");
         $mainDiv.attr('id', "main");
         $mainDiv.load('final.html')
         
         return false;
     }
+    console.log("DODAJE STORAGE")
+    sessionStorage.setItem('question_count', parseInt(sessionStorage.getItem('question_count'))+1);
     return true;
 }
 
@@ -114,7 +135,6 @@ function sign(id) {
     if(bool){
         document.getElementById(id).style.backgroundColor = bg_colors[id];
         document.getElementById(id).style.color = '#ffffff';
-        
         for (const [key, value] of Object.entries(bg_colors)){
             document.getElementById(key).classList.remove(key);
         }
