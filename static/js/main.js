@@ -1,51 +1,48 @@
 
 var start_btn = document.getElementById("start").addEventListener("click", function() {
-    // this.style.display = "none";
-    // document.getElementById("box").style.visibility = "visible";
+    sessionStorage.setItem('path', document.getElementById("select-path").value);
     location.href = "/static/pages/quiz.html";
 });
 const questions_url = '/categories.json';
 const questions_dir = '/questions/';
-var files;
 let temp;
 async function getJSON(url) {
     const response = await fetch(url);
     const data = await response.json();
 
-    temp = data.filesName;
-    console.log(temp)
+    temp = data;
+
+    // console.log(temp)
 }
 
 var paths = [];
-async function getPaths(d){
-    console.log(d);
-    for (let i = 0; i < d.length; i++) {
-        paths.push(d[i])
+var titles_dic = {};
+async function getPaths(tab){
+    // console.log(tab);
+    for (let i = 0; i < tab.length; i++) {
+        paths.push(tab[i])
     }
 }
-function saveCookies(name, value){
-    document.cookie = name+"="+value;
-    console.log("COOKIE: "+name+"="+value)
+
+async function getTitleFromJSON(){
+    for (let i = 0; i < paths.length; i++) {
+        const response = await fetch(questions_dir + paths[i]);
+        const data = await response.json();
+        titles_dic[data.title] = questions_dir + paths[i];
+        }
 }
-
 window.onload = function() {
-    // getJSON(questions_url);
-    // console.log(temp)
-    // getPaths(main_data.filesName);
-
-    // for (let i = 0; i < paths.length; i++) {
-    //     const file = paths[i];
-    //     console.log(questions_dir+file);
-    // }
-
+    getJSON(questions_url)
+    .then(() => getPaths(temp.filesName))
+    .then(() => getTitleFromJSON())
+    .then(() => load_select(titles_dic))
 
     sessionStorage.setItem('score', 0);
     sessionStorage.setItem('question_count', 0);
 }
 
-function load_select(){
-    for (let i = 0; i < files.length; i++) {
-        document.getElementById('select-path').innerHTML += "<option>" +files[i] +"</option>";
-        
+function load_select(dic){
+    for (const [key, value] of Object.entries(dic)){
+        document.getElementById('select-path').innerHTML += "<option value="+ value +">" + key +"</option>";
     }
 }

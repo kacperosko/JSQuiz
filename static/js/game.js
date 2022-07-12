@@ -7,7 +7,7 @@ function saveData(data) {
     q=data.qusetions;
     how_many=data.qusetions.length
     console.log(how_many)}
-const questions_url = '/questions.json';
+const questions_url = sessionStorage.getItem('path');
 async function getQuestions() {
     const response = await fetch(questions_url);
     const data = await response.json();
@@ -53,6 +53,10 @@ function next_step(id){
     if(is_next_question()){
         loadData(q)
     }
+    if (correct_bool){
+        sessionStorage.setItem("score", parseInt(sessionStorage.getItem('score'))+1)
+        document.getElementById('score').innerHTML =  sessionStorage.getItem('score');
+    }
 }
 function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -86,14 +90,10 @@ var correct_bool;
 function is_correct(id){
     if (parseInt(id.slice(-1)) == correct){
         correct_bool = true;
-        sessionStorage.setItem("score", parseInt(sessionStorage.getItem('score'))+1)
-        // score++;
     }else{
         correct_bool = false;
     }
     animate(id, correct_bool);
-    document.getElementById('score').innerHTML =  sessionStorage.getItem('score');
-    // next_step(id);
     bool = true;
 }
 function saveCookies(name, value){

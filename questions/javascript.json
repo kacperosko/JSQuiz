@@ -9,6 +9,7 @@
         ["How do You set new content for an element on site?", "element.writeHTML", "element.innerHTML", "element.setHTML", "element.HTML", 2],
         ["How do You get element by its ID?", "document.getElementById()", "document.getById()", "site.getById()", "getElementByItsId()", 1],
         ["You can fetch JSON file while testing in file:///Users/...", "False", "True", "Nothing above", "True but only in Safari", 1],
-        ["Which tag is for JavaScript in HTML?", "<JS></JS>", "<JavaScript></JavaScript>", "<code></code>", "<script></scrit>", 4]
+        ["Which word is in tag for JavaScript in HTML?", "Js", "JavaScript", "code", "script", 4],
+        ["How to save some data to user session?", "session.save()", "session.write()", "session.setItem()" ,"sess.save()", 3]
     ]
 }

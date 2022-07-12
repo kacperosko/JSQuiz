@@ -1,14 +1,11 @@
 {
     "title": "Python",
     "qusetions":[
-        ["JavaScript is a ___ -side programming language.", "Client", "Server", "Both", "None", 3],
-        ["What will be the result of 3 > 2 > 1 === false", "true", "None", "Error", "false", 1],
-        ["How to show some text in JS console?", "print()", "console.log()", "println()", "System.out.printf()", 2],
-        ["Which if statement is correct?", "if x = 2", "if(x=2)", "if(x != 2)", "if(x == 2)", 4],
-        ["What type of variable is false and true?", "String", "Logical", "Boolean", "Nothing above", 3],
-        ["How do You set new content for an element on site?", "element.writeHTML", "element.innerHTML", "element.setHTML", "element.HTML", 2],
-        ["How do You get element by its ID?", "document.getElementById()", "document.getById()", "site.getById()", "getElementByItsId()", 1],
-        ["You can fetch JSON file while testing in file:///Users/...", "False", "True", "Nothing above", "True but only in Safari", 1],
-        ["Which tag is for JavaScript in HTML?", "<JS></JS>", "<JavaScript></JavaScript>", "<code></code>", "<script></scrit>", 4]
-    ]
+        ["Which command will show 'Hello world' in console?", "print('Hello world')", "System.out.print('Hello world')", "console('Hello world')","console.log('Hello world')", 1],
+        ["In which package you can create table (columns and rows) variable?", "tkinter", "numpy" ,"pandas", "requests", 3],
+        ["____ framework is for web development in Python", "web", "seaborn", "NLTK", "django", 4],
+        ["How do you define some functiuon?", "function", "def", "define", "func", 2],
+        ["Which is incorrect?", "tab[:::-1]", "tab[1]", "tab[:-1]", "tab[::-1]", 1],
+        ["How do you add to dictionary 'Company' new key = programmer with value = 'Kacper'", "Company.programmer = 'Kacper", "Company.add(programmer, 'Kacper)", "Company[programmer] = 'Kacper'", "Company(programmer) = 'Kacper'", 3]
+        ]
 }
