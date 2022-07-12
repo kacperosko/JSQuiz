@@ -1,0 +1,10 @@
+{
+    "title": "SQL",
+    "qusetions":[
+        ["How to get all records from table?", "SELECT All FROM Table", "SELECT * FROM Table", "All FROM Table", "GET * FROM Table",2],
+        ["How do you add new record to table?", "ADD", "SET" ,"INSERT", "GRANT", 3],
+        ["Which statemnt gives user new permission?", "GRANT", "UPDATE", "PERM", "ADD PERMISSION", 1],
+        ["What will be the result of True or Null", "False", "Null", "Error", "True", 2],
+        ["What scheme would be the best for Presidents and Country (every president has his own Countries)", "Presidents(Id, Name)<br>Countries(Id, Name, president_id)", "Presidents(Id, Name)<br>Countries(Id, Name, president_id, country_id)", "Presidents(Id, Name, Country)","Presidents(Id, Name)<br>Countries(Id, Name)<br>Leaders(president_id, country_id)", 4]
+        ]
+}

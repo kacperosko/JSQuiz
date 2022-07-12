@@ -6,7 +6,7 @@ var how_many, msg, q;
 function saveData(data) {
     q=data.qusetions;
     how_many=data.qusetions.length
-    console.log(how_many)}
+}
 const questions_url = sessionStorage.getItem('path');
 async function getQuestions() {
     const response = await fetch(questions_url);
@@ -21,15 +21,12 @@ window.onload = function() {
 }
 
 var bool = true;
-// var question_count = 0;
 var correct;
 var actuall_q = 1;
 function  loadData(data) {
     bool = true;
 
     var question_count = parseInt(sessionStorage.getItem('question_count'));
-    console.log(question_count);
-    console.log(data[question_count][1]);
     
     document.getElementById('title').innerHTML = data[question_count][0];
 
@@ -60,7 +57,7 @@ function next_step(id){
 }
 function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
-  }
+}
 function animate(id, correction){
     msg = pop_msg[correction];
     msg = msg[Math.floor(Math.random() * msg.length)];
@@ -96,24 +93,6 @@ function is_correct(id){
     animate(id, correct_bool);
     bool = true;
 }
-function saveCookies(name, value){
-    document.cookie = name+"="+value;
-}
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
 function is_next_question(){
     if((parseInt(sessionStorage.getItem('question_count'))+1) == how_many){
         //zakoncz gre -- final screen z wynikiem
@@ -125,7 +104,6 @@ function is_next_question(){
         
         return false;
     }
-    console.log("DODAJE STORAGE")
     sessionStorage.setItem('question_count', parseInt(sessionStorage.getItem('question_count'))+1);
     return true;
 }

@@ -1,7 +1,7 @@
 {
     "title": "Python",
     "qusetions":[
-        ["Which command will show 'Hello world' in console?", "print('Hello world')", "System.out.print('Hello world')", "console('Hello world')","console.log('Hello world')", 1],
+        ["Which command will show 'Hello world' in console?", "print('Hello world')", "System.out.print('Hello world')", "echo('Hello world')","console.log('Hello world')", 1],
         ["In which package you can create table (columns and rows) variable?", "tkinter", "numpy" ,"pandas", "requests", 3],
         ["____ framework is for web development in Python", "web", "seaborn", "NLTK", "django", 4],
         ["How do you define some functiuon?", "function", "def", "define", "func", 2],

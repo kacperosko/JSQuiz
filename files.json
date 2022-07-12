@@ -1,3 +1,4 @@
 {
-    "filesName": ["javascript.json", "python.json"]
+    "comment": "Note that if you adding new file you have to define unique Title in it!",
+    "filesName": ["javascript.json", "python.json", "sql.json"]
 }
