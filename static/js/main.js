@@ -18,7 +18,7 @@ async function getJSON(url) {
 }
 
 var paths = [];
-var titles_dic = {};
+var titles_dic;
 async function getPaths(tab) {
   // console.log(tab);
   for (let i = 0; i < tab.length; i++) {
@@ -27,12 +27,12 @@ async function getPaths(tab) {
 }
 
 async function getTitleFromJSON() {
-  for (let i = 0; i < paths.length; i++) {
-    const response = await fetch(questions_dir + paths[i]);
-    const data = await response.json();
-    titles_dic[data.title] = questions_dir + paths[i];
-    console.log(titles_dic)
-  }
+    titles_dic = {};
+    for (let i = 0; i < paths.length; i++) {
+        const response = await fetch(questions_dir + paths[i]);
+        const data = await response.json();
+        titles_dic[data.title] = questions_dir + paths[i];
+    }
 }
 function load_select(dic) {
   for (const [key, value] of Object.entries(dic)) {
@@ -41,12 +41,17 @@ function load_select(dic) {
   }
 }
 
-// window.onload = function () {
-getJSON(questions_url)
-    .then(() => getPaths(temp.filesName))
-    .then(() => getTitleFromJSON())
-    .then(() => load_select(titles_dic));
+window.onload = function () {
+    getJSON(questions_url)
+        .then(() => getPaths(temp.filesName))
+        .then(() => getTitleFromJSON())
+        .then(() => load_select(titles_dic));
+        
+    sessionStorage.setItem("score", 0);
+    sessionStorage.setItem("question_count", 0);
+};
 
-sessionStorage.setItem("score", 0);
-sessionStorage.setItem("question_count", 0);
-//   };
+function run() {
+    sessionStorage.setItem("score", 0);
+    sessionStorage.setItem("question_count", 0);
+};
