@@ -1,4 +1,6 @@
-
+// 
+// Made by Kacper Osko
+// 
 var bg_colors = {a1:"#7AE6B3", a2:"#41C0F2", a3:"#FFE870", a4:"#F272C5"};
 var pop_msg = {true: ["That's correct!", "Excellent, this is good answer", "Congrats, good answer!!!", "Wow! You're amazing"],
                 false:["Unfortunally that's incorrect", "Not this time but keep trying", "This answer doesn't look correct", "Bad shoot, try again"]}

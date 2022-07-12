@@ -1,3 +1,6 @@
+// 
+// Made by Kacper Osko
+// 
 var start_btn = document
   .getElementById("start")
   .addEventListener("click", function () {
@@ -46,7 +49,7 @@ window.onload = function () {
         .then(() => getPaths(temp.filesName))
         .then(() => getTitleFromJSON())
         .then(() => load_select(titles_dic));
-        
+
     sessionStorage.setItem("score", 0);
     sessionStorage.setItem("question_count", 0);
 };
