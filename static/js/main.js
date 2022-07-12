@@ -3,7 +3,7 @@ var start_btn = document.getElementById("start").addEventListener("click", funct
     sessionStorage.setItem('path', document.getElementById("select-path").value);
     location.href = "/static/pages/quiz.html";
 });
-const questions_url = '/categories.json';
+const questions_url = '/files.json';
 const questions_dir = '/questions/';
 let temp;
 async function getJSON(url) {
