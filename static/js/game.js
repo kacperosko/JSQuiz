@@ -25,7 +25,11 @@ window.onload = function() {
 var bool = true;
 var correct;
 var actuall_q = 1;
+let timerTime = 10,
+    width = 860;
+
 function  loadData(data) {
+    startTimer();
     bool = true;
 
     var question_count = parseInt(sessionStorage.getItem('question_count'));
@@ -44,8 +48,10 @@ function  loadData(data) {
 }
 
 function next_step(id){
-    document.getElementById(id).style.backgroundColor = "";
-    document.getElementById(id).style.color = '#000000';
+    try{
+        document.getElementById(id).style.backgroundColor = "";
+        document.getElementById(id).style.color = '#000000';
+    } catch(error){}
     for (const [key, value] of Object.entries(bg_colors)){
         document.getElementById(key).classList.add(key);
     }
@@ -92,6 +98,8 @@ function is_correct(id){
     }else{
         correct_bool = false;
     }
+    clearInterval(add)
+    console.log(timerTime)
     animate(id, correct_bool);
     bool = true;
 }
@@ -126,4 +134,19 @@ function sign(id) {
 
 function again(){
     location.href = "../../index.html";
+}
+let n;
+function startTimer() {
+    n = 1;
+    timerTime = 1000;
+    add = setInterval(function() {        
+        if (timerTime <= 0){
+            // console.log(n)
+            is_correct('a0');
+            clearInterval(add);
+        }
+        w = width - n++/1000*860;
+        document.getElementById("timer").style.width = w < 0 ? "0px" : w+"px";
+        timerTime -= 1;
+    }, 10);
 }
