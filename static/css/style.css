@@ -86,9 +86,13 @@
     -webkit-box-shadow: 0 0 50px rgb(55, 55, 55);
     box-shadow: 0 0 50px rgb(55, 55, 55);
 }
+#popup-text{
+    margin-left: 15px;
+    margin-right: 15px;
+}
 .card-quiz{
     width: 900px;
-    height: 650px;
+    height: 750px;
     background-color: #ebd7be;
     border-radius: 20px;
     box-shadow:5px 5px 20px 8px #a1a1a1;
@@ -121,7 +125,7 @@
     color: #9D7BD9;
 }
 .card-quiz > h2 {
-    font-size: 30px;
+    font-size: 27px;
     font-weight: 600;
     color: #9D7BD9;
     text-align: center;
